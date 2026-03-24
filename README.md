@@ -46,8 +46,9 @@ This project follows a structured data pipeline that ingests raw data from local
 | :--- | :--- |
 | **Local Data Path** | `data/Airbnb Data` |
 | **GCP Project ID** | `paris-airbnb-de-zoomcamp` |
-| **GCS Bucket Name** | `paris-airbnb-datalake-paris-airbnb-de-zoomcamp` |
-| **GCS Data Path** | `paris-airbnb-datalake-paris-airbnb-de-zoomcamp/raw` |
+| **GCS Bucket Name** | `datalake-paris-airbnb-de-zoomcamp` |
+| **GCS Data Path** | `raw` |
+| **BigQuery Dataset Name** | `staging` |
 
 ---
 
@@ -84,23 +85,14 @@ To ensure global uniqueness and maintainable infrastructure, the following conve
    1. Add the environment variable to your `.bashrc` file by running the following command:
       ```bash
       echo 'export GOOGLE_APPLICATION_CREDENTIALS="/path/to/your/gcp-key.json"' >> ~/.bashrc
+      echo 'export TF_VAR_project_id="your-gcp-project-id"' >> ~/.bashrc
+      echo 'export TF_VAR_gcs_bucket_name="datalake-${TF_VAR_project_id}"' >> ~/.bashrc
+      echo 'export TF_VAR_bq_dataset_id="staging"' >> ~/.bashrc
       ```
    2. Apply the changes by sourcing your `.bashrc` file:
       ```bash
       source ~/.bashrc
       ```
-
-   3. To provide the GCP Project ID to Terraform, set the `TF_VAR_project_id` environment variable:
-      ```bash
-      export TF_VAR_project_id="your-gcp-project-id"
-      ```
-      Replace `your-gcp-project-id` with your actual Google Cloud Project ID. You can add this line to your `.bashrc` file as well.
-
-   4. To specify the GCS Bucket Name for Terraform, set the `TF_VAR_gcs_bucket_name` environment variable:
-      ```bash
-      export TF_VAR_gcs_bucket_name="your-gcs-bucket-name"
-      ```
-      Replace `your-gcs-bucket-name` with the name of your Google Cloud Storage bucket. This can also be added to your `.bashrc` file.
 
 2. kaggle
 - Configured your Kaggle API credentials (kaggle.json in ~/.kaggle/).
@@ -121,4 +113,18 @@ terraform -chdir=terraform destroy
 5. Run Python script to ingest data
 ```bash
 python scripts/ingest.py
+```
+
+6. dbt
+```bash
+> dbt init paris_airbnb_dbt
+Which database would you like to use?
+[1] bigquery
+
+(Don't see the one you want? https://docs.getdbt.com/docs/available-adapters)
+
+Enter a number: 1
+
+
+
 ```

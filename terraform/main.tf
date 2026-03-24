@@ -15,4 +15,5 @@ resource "google_bigquery_dataset" "paris_airbnb_staging" {
   dataset_id = var.bq_dataset_id
   project    = var.project_id
   location   = var.region # Using region variable
+  delete_contents_on_destroy = true
 }
