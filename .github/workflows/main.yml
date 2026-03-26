@@ -38,10 +38,6 @@ jobs:
 
       - name: Set up Cloud SDK
         uses: google-github-actions/setup-gcloud@v2
-
-      - name: Verify GCP Authentication
-        run: |
-          bq ls --project_id ${{ env.TF_VAR_project_id }}
       # ---------------------------------------------------------
 
       # ---------------------------------------------------------
@@ -53,6 +49,17 @@ jobs:
 
       - name: Terraform Init
         run: terraform -chdir=terraform init
+
+        # drop datasets that cannot be destroyed due to existing native tables
+      - name: Pre-clean BigQuery Datasets
+        run: |
+          bq rm -f -r -d ${{ env.TF_VAR_project_id }}:raw
+          bq rm -f -r -d ${{ env.TF_VAR_project_id }}:staging
+          bq rm -f -r -d ${{ env.TF_VAR_project_id }}:marts
+
+      - name: Verify GCP Authentication
+        run: |
+          bq ls --project_id ${{ env.TF_VAR_project_id }}
 
       - name: Terraform Apply
         run: terraform -chdir=terraform apply -auto-approve
