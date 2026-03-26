@@ -66,13 +66,14 @@ jobs:
       # ---------------------------------------------------------
 
     # 2.Ingest Data
-      - name: Download data from Kaggle and upload to GCS
-        env:
-          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
-          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+      - name: Create Kaggle Config File
         run: |
-          # kaggle datasets download -d mysarahmadbhat/airbnb-listings-reviews
-          # ls
+          mkdir -p ~/.kaggle
+          echo '{"username":"${{ secrets.KAGGLE_USERNAME }}","key":"${{ secrets.KAGGLE_KEY }}"}' > ~/.kaggle/kaggle.json
+          chmod 600 ~/.kaggle/kaggle.json
+
+      - name: Download data from Kaggle and upload to GCS
+        run: |
           python scripts/ingest.py
 
     # 3.Run dbt
@@ -80,5 +81,5 @@ jobs:
     # 4.Refresh Dashboard
 
     # 5.Destroy reousrces
-      - name: Terraform Destroy
-        run: terraform -chdir=terraform destroy
+      # - name: Terraform Destroy
+      #   run: terraform -chdir=terraform destroy -auto-approve
