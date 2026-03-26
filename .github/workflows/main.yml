@@ -1,13 +1,13 @@
-name: dbt Environment Check
+name: Workflow for paris-airbnb-de-zoomcamp
 
 on:
-  push:
+  # push:
     # branches:
     #   - main
   workflow_dispatch:
-
+  
 jobs:
-  check-dbt-install:
+  ingest-transform-data:
     runs-on: ubuntu-latest
 
     steps:
@@ -28,3 +28,12 @@ jobs:
         run: |
           echo "Checking installed dbt packages..."
           pip list | grep dbt
+
+      - name: Download data from Kaggle
+        env:
+          KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
+          KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
+        run: |
+          kaggle datasets download -d mysarahmadbhat/airbnb-listings-reviews
+          ls
+          # python scripts/ingest.py
