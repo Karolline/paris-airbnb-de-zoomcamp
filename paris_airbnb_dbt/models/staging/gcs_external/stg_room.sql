@@ -1,0 +1,40 @@
+-- Properties staging model
+-- This model processes raw room data from the 'Listings.csv' file,
+-- converting it into a clean and standardized format.
+
+SELECT
+    CAST(listing_id AS INT) AS room_id,
+    REGEXP_REPLACE(name, r"[^a-zA-Z0-9.,!\- ]", "") AS room_name,
+    CAST(host_id AS INT) AS host_id,
+    CAST(host_since AS DATE) AS host_since,
+    CAST(host_location AS STRING) AS host_location,
+    CAST(host_response_time AS STRING) AS host_response_time,
+    CAST(host_response_rate AS FLOAT64) AS host_response_rate,
+    CAST(host_acceptance_rate AS FLOAT64) AS host_acceptance_rate,
+    CASE WHEN host_is_superhost = 't' THEN TRUE ELSE FALSE END AS host_is_superhost,
+    CAST(host_total_listings_count AS INT) AS host_total_listings_count,
+    CASE WHEN host_has_profile_pic = 't' THEN TRUE ELSE FALSE END AS host_has_profile_pic,
+    CASE WHEN host_identity_verified = 't' THEN TRUE ELSE FALSE END AS host_identity_verified,
+    CAST(neighbourhood AS STRING) AS neighbourhood,
+    CAST(district AS STRING) AS district,
+    CAST(city AS STRING) AS city,
+    CAST(latitude AS NUMERIC) AS latitude,
+    CAST(longitude AS NUMERIC) AS longitude,
+    CAST(property_type AS STRING) AS property_type,
+    CAST(room_type AS STRING) AS room_type,
+    CAST(accommodates AS INT) AS accommodates,
+    CAST(bedrooms AS INT) AS bedrooms,
+    CAST(amenities AS STRING) AS amenities,
+    CAST(price AS NUMERIC) AS price,
+    CAST(minimum_nights AS INT) AS minimum_nights,
+    CAST(maximum_nights AS INT) AS maximum_nights,
+    CAST(review_scores_rating AS FLOAT64) AS review_scores_rating,
+    CAST(review_scores_accuracy AS FLOAT64) AS review_scores_accuracy,
+    CAST(review_scores_cleanliness AS FLOAT64) AS review_scores_cleanliness,
+    CAST(review_scores_checkin AS FLOAT64) AS review_scores_checkin,
+    CAST(review_scores_communication AS FLOAT64) AS review_scores_communication,
+    CAST(review_scores_location AS FLOAT64) AS review_scores_location,
+    CAST(review_scores_value AS FLOAT64) AS review_scores_value,
+    CASE WHEN instant_bookable = 't' THEN TRUE ELSE FALSE END AS instant_bookable
+FROM
+    {{ source("datalake", "listings") }}

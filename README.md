@@ -48,7 +48,8 @@ This project follows a structured data pipeline that ingests raw data from local
 | **GCP Project ID** | `paris-airbnb-de-zoomcamp` |
 | **GCS Bucket Name** | `datalake-paris-airbnb-de-zoomcamp` |
 | **GCS Data Path** | `raw` |
-| **BigQuery Dataset Name** | `staging` |
+| **BigQuery Dataset Name for External Table** | `raw` |
+| **BigQuery Dataset Name for Staging Table** | `staging` |
 
 ---
 
@@ -107,7 +108,6 @@ To ensure global uniqueness and maintainable infrastructure, the following conve
 terraform -chdir=terraform init
 terraform -chdir=terraform plan
 terraform -chdir=terraform apply
-terraform -chdir=terraform destroy
 ```
 
 5. Run Python script to ingest data
@@ -117,14 +117,8 @@ python scripts/ingest.py
 
 6. dbt
 ```bash
-> dbt init paris_airbnb_dbt
-Which database would you like to use?
-[1] bigquery
-
-(Don't see the one you want? https://docs.getdbt.com/docs/available-adapters)
-
-Enter a number: 1
-
-
-
+dbt init paris_airbnb_dbt
+dbt compile --project-dir paris_airbnb_dbt
+dbt run-operation stage_external_sources --project-dir paris_airbnb_dbt
+dbt run --project-dir paris_airbnb_dbt
 ```
