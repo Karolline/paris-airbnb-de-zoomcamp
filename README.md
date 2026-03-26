@@ -1,5 +1,7 @@
 # paris-airbnb-de-zoomcamp
 
+[Dashboard](https://lookerstudio.google.com/reporting/07d24862-8208-40db-a2fd-9176d311c94b/page/tEnnC)
+
 ## Description
 🇫🇷 Paris Airbnb Data Analysis: Enclos-St-Laurent
 This project is part of the Data Engineering Zoomcamp, focusing on building an end-to-end data pipeline to analyze Airbnb listing and review data in the Enclos-St-Laurent (10th Arrondissement) area of Paris.
@@ -125,4 +127,7 @@ dbt deps --project-dir paris_airbnb_dbt
 dbt compile --project-dir paris_airbnb_dbt
 dbt run-operation stage_external_sources --project-dir paris_airbnb_dbt
 dbt run --project-dir paris_airbnb_dbt
+
+dbt docs generate
+dbt docs serve
 ```
