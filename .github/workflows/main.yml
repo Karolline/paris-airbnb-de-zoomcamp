@@ -83,13 +83,13 @@ jobs:
       - name: Stage External Sources
         run: |
           dbt run-operation stage_external_sources \
-          --project-dir paris_airbnb_dbt
+          --project-dir paris_airbnb_dbt \
           --profiles-dir paris_airbnb_dbt
 
       - name: Execute dbt Models
         run: |
           dbt run \
-          --project-dir paris_airbnb_dbt
+          --project-dir paris_airbnb_dbt \
           --profiles-dir paris_airbnb_dbt
       # ---------------------------------------------------------
 
