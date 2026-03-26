@@ -99,7 +99,10 @@ To ensure global uniqueness and maintainable infrastructure, the following conve
 - Configured your Kaggle API credentials (kaggle.json in ~/.kaggle/).
 
 
-3. Install Requirements
+3. Install Python Requirements
+```bash
+pip install -r requirements.txt
+```
 
 4. Run Terraform
 
@@ -118,6 +121,7 @@ python scripts/ingest.py
 6. dbt
 ```bash
 dbt init paris_airbnb_dbt
+dbt deps --project-dir paris_airbnb_dbt
 dbt compile --project-dir paris_airbnb_dbt
 dbt run-operation stage_external_sources --project-dir paris_airbnb_dbt
 dbt run --project-dir paris_airbnb_dbt

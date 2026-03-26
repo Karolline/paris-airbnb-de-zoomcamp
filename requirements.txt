@@ -1,3 +1,6 @@
 kaggle
-google-cloud-storage
-dbt-bigquery
+google-cloud-storage==2.19.0
+google-cloud-bigquery==3.15.0
+dbt-bigquery==1.7.7
+dbt-core==1.7.5
+protobuf==4.25.9

@@ -18,6 +18,9 @@ sources:
         columns:
           - name: listing_id
             data_type: STRING
+            tests:
+              - not_null
+              - unique
           - name: name
             data_type: STRING
           - name: host_id
@@ -92,10 +95,17 @@ sources:
         columns:
           - name: listing_id
             data_type: STRING
+            tests:
+              - not_null
           - name: review_id
+            tests:
+                - not_null
             data_type: STRING
           - name: date
             data_type: STRING
           - name: reviewer_id
             data_type: STRING
+        tests:
+          - dbt_utils.unique_combination_of_columns:
+              combination_of_columns: ["listing_id", "review_id"]
 
