@@ -66,17 +66,19 @@ jobs:
       # ---------------------------------------------------------
 
     # 2.Ingest Data
-      - name: Download data from Kaggle
+      - name: Download data from Kaggle and upload to GCS
         env:
           KAGGLE_USERNAME: ${{ secrets.KAGGLE_USERNAME }}
           KAGGLE_KEY: ${{ secrets.KAGGLE_KEY }}
         run: |
-          kaggle datasets download -d mysarahmadbhat/airbnb-listings-reviews
-          ls
-          # python scripts/ingest.py
+          # kaggle datasets download -d mysarahmadbhat/airbnb-listings-reviews
+          # ls
+          python scripts/ingest.py
 
     # 3.Run dbt
 
     # 4.Refresh Dashboard
 
     # 5.Destroy reousrces
+      - name: Terraform Destroy
+        run: terraform -chdir=terraform destroy
