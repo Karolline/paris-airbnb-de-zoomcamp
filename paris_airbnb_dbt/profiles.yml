@@ -1,0 +1,14 @@
+paris_airbnb_dbt:
+  outputs:
+    dev:
+      dataset: staging
+      job_execution_timeout_seconds: 300
+      job_retries: 1
+      keyfile: "{{ env_var('GOOGLE_APPLICATION_CREDENTIALS') }}"
+      location: "{{ env_var('TF_VAR_region') }}"
+      method: service-account
+      priority: interactive
+      project: "{{ env_var('TF_VAR_project_id') }}"
+      threads: 4
+      type: bigquery
+  target: dev
