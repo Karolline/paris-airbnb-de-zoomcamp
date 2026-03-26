@@ -41,7 +41,10 @@ jobs:
 
       - name: Verify GCP Authentication
         run: |
-          gcloud alpha bq datasets list --project=paris-airbnb-de-zoomcamp --format="value(datasetReference.datasetId)"
+          gcloud alpha bq datasets list \
+            --project=paris-airbnb-de-zoomcamp \
+            --format="value(datasetReference.datasetId)" \
+            --quiet
       # ---------------------------------------------------------
 
       # ---------------------------------------------------------
