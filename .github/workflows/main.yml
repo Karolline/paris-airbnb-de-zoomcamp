@@ -81,10 +81,16 @@ jobs:
         run: dbt deps --project-dir paris_airbnb_dbt
 
       - name: Stage External Sources
-        run: dbt run-operation stage_external_sources --project-dir paris_airbnb_dbt
+        run: |
+          dbt run-operation stage_external_sources \
+          --project-dir paris_airbnb_dbt
+          --profiles-dir paris_airbnb_dbt
 
       - name: Execute dbt Models
-        run: dbt run --project-dir paris_airbnb_dbt
+        run: |
+          dbt run \
+          --project-dir paris_airbnb_dbt
+          --profiles-dir paris_airbnb_dbt
       # ---------------------------------------------------------
 
     # 4.Refresh Dashboard
