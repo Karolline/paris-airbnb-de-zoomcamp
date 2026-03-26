@@ -31,8 +31,19 @@ clean-targets:         # directories to be removed by `dbt clean`
 # files using the `{{ config(...) }}` macro.
 models:
   paris_airbnb_dbt:
+  
     staging:
+      +schema: staging
       gcs_external:
         +materialized: table
       bq_internal:
         +materialized: view
+
+    intermediate:
+      +schema: intermediate
+      +materialized: view
+
+    marts:
+      +schema: marts
+      +materialized: table
+

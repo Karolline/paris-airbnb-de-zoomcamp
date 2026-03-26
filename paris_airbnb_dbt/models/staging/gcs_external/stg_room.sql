@@ -1,7 +1,9 @@
 -- Properties staging model
 -- This model processes raw room data from the 'Listings.csv' file,
 -- converting it INT64o a clean and standardized format.
-
+{{ config(
+    cluster_by=['city']
+) }}
 SELECT
     -- 1. Identifiers
     CAST(listing_id AS INT64) AS room_id,
