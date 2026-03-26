@@ -18,7 +18,19 @@ resource "google_bigquery_dataset" "paris_airbnb_raw" {
 }
 
 resource "google_bigquery_dataset" "paris_airbnb_staging" {
-  dataset_id = var.bq_dataset_id
+  dataset_id = "staging"
+  project    = var.project_id
+  location   = var.region # Using region variable
+}
+
+resource "google_bigquery_dataset" "paris_airbnb_intermediate" {
+  dataset_id = "intermediate"
+  project    = var.project_id
+  location   = var.region # Using region variable
+}
+
+resource "google_bigquery_dataset" "paris_airbnb_marts" {
+  dataset_id = "marts"
   project    = var.project_id
   location   = var.region # Using region variable
 }

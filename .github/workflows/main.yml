@@ -9,6 +9,9 @@ on:
 jobs:
   ingest-transform-data:
     runs-on: ubuntu-latest
+    env:
+      TF_VAR_project_id: "paris-airbnb-de-zoomcamp"
+      TF_VAR_gcs_bucket_name: "datalake-paris-airbnb-de-zoomcamp"
 
     steps:
     # 1. Settings for Environment
@@ -25,6 +28,9 @@ jobs:
           python -m pip install --upgrade pip
           if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
 
+      # ---------------------------------------------------------
+      # GCP AUTHENTICATION SECTION
+      # --------------------------------------------------------- 
       - name: Authenticate to Google Cloud
         uses: google-github-actions/auth@v2
         with:
@@ -35,8 +41,22 @@ jobs:
 
       - name: Verify GCP Authentication
         run: |
-          gcloud auth list
-          gcloud config list project
+          gcloud alpha bq datasets list --project=paris-airbnb-de-zoomcamp --format="value(datasetReference.datasetId)"
+      # ---------------------------------------------------------
+
+      # ---------------------------------------------------------
+      # TERRAFORM SECTION
+      # ---------------------------------------------------------
+
+      - name: Setup Terraform
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init
+        run: terraform -chdir=terraform init
+
+      - name: Terraform Apply
+        run: terraform -chdir=terraform apply -auto-approve
+      # ---------------------------------------------------------
 
     # 2.Ingest Data
       - name: Download data from Kaggle

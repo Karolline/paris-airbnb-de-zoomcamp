@@ -90,7 +90,6 @@ To ensure global uniqueness and maintainable infrastructure, the following conve
       echo 'export GOOGLE_APPLICATION_CREDENTIALS="/path/to/your/gcp-key.json"' >> ~/.bashrc
       echo 'export TF_VAR_project_id="your-gcp-project-id"' >> ~/.bashrc
       echo 'export TF_VAR_gcs_bucket_name="datalake-${TF_VAR_project_id}"' >> ~/.bashrc
-      echo 'export TF_VAR_bq_dataset_id="staging"' >> ~/.bashrc
       ```
    2. Apply the changes by sourcing your `.bashrc` file:
       ```bash

@@ -9,11 +9,6 @@ variable "gcs_bucket_name" {
   type        = string
 }
 
-variable "bq_dataset_id" {
-  description = "The BigQuery dataset id"
-  type        = string
-}
-
 variable "region" {
   description = "GCP region for resources"
   type        = string
