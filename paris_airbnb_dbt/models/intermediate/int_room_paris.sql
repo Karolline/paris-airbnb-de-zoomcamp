@@ -6,4 +6,3 @@ select
     *
 from rooms
 where city = 'Paris' 
-  and neighbourhood = 'Enclos-St-Laurent'
