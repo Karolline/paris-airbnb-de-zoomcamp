@@ -1,8 +1,8 @@
-with rooms as (
+with room as (
     select * from {{ ref("stg_room") }}
 )
 
 select 
     *
-from rooms
+from room
 where city = 'Paris' 

@@ -1,10 +1,10 @@
-with int_room_paris as (
-    select * from {{ ref("int_room_paris") }}
+with int_paris_room as (
+    select * from {{ ref("int_paris_room") }}
 )
 
 select 
     neighbourhood,
     room_type,
     count(room_id) as room_count
-from int_room_paris
+from int_paris_room
 group by neighbourhood, room_type

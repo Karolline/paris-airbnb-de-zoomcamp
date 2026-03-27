@@ -6,8 +6,8 @@
 ) }}
 SELECT
     -- 1. Identifiers
-    CAST(listing_id AS INT64) AS room_id,
-    CAST(host_id AS INT64) AS host_id,
+    CAST(listing_id AS STRING) AS room_id,
+    CAST(host_id AS STRING) AS host_id,
 
     -- 2. Location
     CAST(city AS STRING) AS city,
