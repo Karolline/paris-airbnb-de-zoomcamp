@@ -96,9 +96,10 @@ The objective of this analysis is to provide insights into the local accommodati
 <h3>📈 1. Distribution of Room Types by Neighbourhood</h3>
   <tr>
     <td width="50%" align="center" valign="top">
-      <a href="https://lookerstudio.google.com/reporting/07d24862-8208-40db-a2fd-9176d311c94b/page/tEnnC">
-         <img src="chart-distrubition_of_room_types.png" alt="Distribution of Room Types" width="100%">
-      </a>
+      <img src="chart-distrubition_of_room_types.png" alt="Distribution of Room Types" width="100%">
+      <small><em>Distribution of Airbnb Room Types
+by Paris Neighbourhood</em></small>
+      
     </td>
     <td width="50%" valign="top">
       <p><strong>Format:</strong> <code>Interactive Pie Chart</code></p>
@@ -121,7 +122,7 @@ The objective of this analysis is to provide insights into the local accommodati
 <img src="chart-review_trends_top_20_paris_rooms.png" alt="Comparative Monthly Review Trends" width="100%">
 
 
-<small><em>Figure 2. Stacked Monthly Review Volume (2019 vs. 2020)</em></small>
+<small><em>Review Trends Before and After the Pandemic Top 20 Paris Rooms</em></small>
 </td>
 <td width="50%" valign="top">
 
