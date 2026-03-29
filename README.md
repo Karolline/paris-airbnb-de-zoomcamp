@@ -92,14 +92,34 @@ graph LR
 ## Visualizations & Analytics
 The objective of this analysis is to provide insights into the local accommodation market and the impact of global events on tourism through the following visualizations:
 
-<table width="100%">
+<!-- <table width="100%">
 <h3>📈 1. Distribution of Room Types by Neighbourhood</h3>
   <tr>
     <td width="50%" align="center" valign="top">
       <img src="chart-distrubition_of_room_types.png" alt="Distribution of Room Types" width="100%">
       <small><em>Distribution of Airbnb Room Types
 by Paris Neighbourhood</em></small>
-      
+    </td>
+    <td width="50%" valign="top">
+      <p><strong>Format:</strong> <code>Interactive Pie Chart</code></p>
+      <hr>
+      <strong>📝 Description</strong>
+      <p>This chart visualizes the proportion of Airbnb accommodation types across Paris districts. Users can dynamically switch between areas like <strong>Opera</strong> and <strong>Passy</strong> using the dropdown filter.</p>
+      <br>
+      <strong>💡 Key Insight</strong>
+      <p>Reveals unique market characteristics, highlighting whether an area is dominated by tourist-centric apartments or transit-oriented budget rooms.</p>
+    </td>
+  </tr>
+</table> -->
+<table width="100%">
+  <tr>
+    <td colspan="2"><h3>📈 1. Distribution of Room Types by Neighbourhood</h3></td>
+  </tr>
+  <tr>
+    <td width="50%" align="center" valign="top">
+      <img src="chart-distrubition_of_room_types.png" alt="Distribution of Room Types" width="100%">
+      <br>
+      <small><em>Distribution of Airbnb Room Types by Paris Neighbourhood</em></small>
     </td>
     <td width="50%" valign="top">
       <p><strong>Format:</strong> <code>Interactive Pie Chart</code></p>
@@ -115,7 +135,7 @@ by Paris Neighbourhood</em></small>
 
 <br>
 
-<table width="100%">
+<!-- <table width="100%">
 <h3>📈 2. Comparative Monthly Review Trends</h3>
 <tr>
 <td width="50%" align="center" valign="top">
@@ -137,6 +157,25 @@ by Paris Neighbourhood</em></small>
 
 </td>
 </tr>
+</table> -->
+<h3>📈 2. Comparative Monthly Review Trends</h3>
+<table width="100%">
+  <tr>
+    <td width="50%" align="center" valign="top">
+      <img src="chart-review_trends_top_20_paris_rooms.png" alt="Comparative Monthly Review Trends" width="100%">
+      <br>
+      <small><em>Review Trends Before and After the Pandemic: Top 20 Paris Rooms</em></small>
+    </td>
+    <td width="50%" valign="top">
+      <p><strong>Format:</strong> <code>Stacked Bar Chart (Time-series)</code></p>
+      <hr>
+      <strong>📝 Description</strong>
+      <p>This visualization tracks the monthly review registration trends for the <strong>Top 20 most-reviewed Paris listings</strong>. By stacking yearly data (2018 vs. 2019 vs. 2020) along the X-axis (Months), the chart provides a direct comparison of seasonal activity and year-over-year growth.</p>
+      <br>
+      <strong>💡 Data Insight: Pandemic Impact</strong>
+      <p>The chart vividly illustrates the <strong>sharp decline in travel activity starting in March 2020</strong>. While 2019 showed robust seasonal growth, the 2020 data highlights the significant disruption caused by the global pandemic.</p>
+    </td>
+  </tr>
 </table>
 
 ## How to Run
